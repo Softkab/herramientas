@@ -1,0 +1,4 @@
+[29-Nov-2016 22:39:26 UTC] PHP Fatal error:  Can't use method return value in write context in /home/torqueal/public_html/herramientas/app/Http/Controllers/HomeController.php on line 56
+[29-Nov-2016 22:40:06 UTC] PHP Fatal error:  Can't use method return value in write context in /home/torqueal/public_html/herramientas/app/Http/Controllers/HomeController.php on line 56
+[12-Jul-2017 17:38:43 UTC] PHP Warning:  POST Content-Length of 13288772 bytes exceeds the limit of 8388608 bytes in Unknown on line 0
+[12-Jul-2017 17:39:33 UTC] PHP Warning:  POST Content-Length of 13288767 bytes exceeds the limit of 8388608 bytes in Unknown on line 0
