@@ -19,4 +19,12 @@ class Productos extends Model
     {
     return $this->belongsToMany('App\Categorias','categoria_producto','idproducto','idcategoria');
     }
+    public function subcategorias()
+    {
+    return $this->belongsToMany('App\Subcategorias');
+    }
+    public function subsubcategorias()
+    {
+    return $this->belongsToMany('App\Subsubcategorias');
+    }
 }

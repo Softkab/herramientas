@@ -34,14 +34,12 @@ class HerramientaController extends Controller
         $categorias=Categorias::all();
         $subcategorias=Subcategorias::all();
         $subsubcategorias=Subsubcategorias::all();
-
-        $idcategoria = DB::table('productos')->select('idcategoria')->where('id', $id)->first();
-        $idsubcategoria = DB::table('productos')->select('idsubcategoria')->where('id', $id)->first();
-        $idsubsubcategoria = DB::table('productos')->select('idsubsubcategoria')->where('id', $id)->first();
-        $categoria = DB::table('categorias')->select('nombre')->where('id', $idcategoria->idcategoria)->first();
-        $subcategoria = DB::table('subcategorias')->where('id', $idsubcategoria->idsubcategoria)->first();
-        $subsubcategoria = DB::table('subsubcategorias')->where('id', $idsubcategoria->idsubcategoria)->first();
-
+        //$idcategoria = DB::table('productos')->select('idcategoria')->where('id', $id)->first();
+        //$idsubcategoria = DB::table('productos')->select('idsubcategoria')->where('id', $id)->get();
+        //$idsubsubcategoria = DB::table('productos')->select('idsubsubcategoria')->where('id', $id)->get();
+        //$categoria = DB::table('categorias')->select('nombre')->where('id', $idcategoria->idcategoria)->get();
+        //$subcategoria = DB::table('subcategorias')->where('id', $idsubcategoria->idsubcategoria)->get();
+        //$subsubcategoria = DB::table('subsubcategorias')->where('id', $idsubcategoria->idsubcategoria)->get();
         $info = array();
         
         foreach ($categorias as $item) {
@@ -50,9 +48,11 @@ class HerramientaController extends Controller
          foreach ($producto->categorias as $item) {
             $borrar = array_pull($info, $item->id, $item->nombre);
         }
-    	  return view('editar', compact('producto','categorias','categoria','subcategorias','subcategoria','subsubcategorias','info'));
-         //urn $cruds; 
-         //print_r($subcategoria);   
+
+       // return $producto->subsubcategorias;
+       return view('editar', compact('producto','categorias','categoria','subcategorias','subcategoria','subsubcategorias','info'));
+      //return $idcategoria;
+       // print_r($borrar);
     }
 
     public function nuevo()
@@ -97,7 +97,7 @@ class HerramientaController extends Controller
         $producto = Productos::find($id);
         $producto->nombre = $request->nombre;
         $producto->categorias()->sync($request->input('categoria'));
-        $producto->idsubcategoria = $request->subcategoria;
+        $producto->subcategorias()->sync($request->input('subcategoria'));
         $producto->idsubsubcategoria = $request->subsubcategoria;
         $producto->resumen = $request->resumen;
         $producto->descripcion = $request->descripcion;

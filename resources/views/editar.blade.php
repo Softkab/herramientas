@@ -13,7 +13,7 @@
                       @foreach ($producto->categorias as $categoria)
                          <option  selected="selected" value="{{$categoria->id}}">{{$categoria->nombre }}</option>
                      @endforeach                  
-                     @foreach($info as $clave => $valor)
+                        @foreach($info as $clave => $valor)
                          <option  value="{{$clave}}">{{$valor}}</option>
                         @endforeach
                     </select>
@@ -21,15 +21,16 @@
                 </div>
             </div>
 {!! Form::label('Subcategoria') !!}
-<select class="form-control" name="subcategoria">
-
-<option value="{!! $subcategoria->id !!}" selected>{!! $subcategoria->nombre !!}</option>	
+<select multiple class="form-control" name="subcategoria[]">
+    @foreach ($producto->subcategorias as $subcategoria)
+        <option  selected="selected" value="{{$subcategoria->id}}">{{$subcategoria->nombre }}</option>
+    @endforeach
 	@foreach ($subcategorias as $subcategoria)
 	<option value="{{$subcategoria->id}}">{{$subcategoria->nombre}}</option>
 	@endforeach
 </select>
 {!! Form::label('SubSubcategoria') !!}
-<select class="form-control" name="subsubcategoria">
+<select multiple class="form-control" name="subsubcategoria">
     <option value="0">Ninguna</option>
 	@foreach ($subsubcategorias as $subsubcategoria)
 	<option value="{{$subsubcategoria->id}}">{{$subsubcategoria->nombre}}</option>
